@@ -24,6 +24,14 @@ const projects = [
     liveDemo: "https://domino-vision-3000.vercel.app/",
   },
   {
+    title: "DevMeet",
+    description:
+      "A web application that helps users explore, bookmark, and manage tech meetups. Features include event filtering, bookmarking, and search functionality.",
+    techStack: ["React", "Material UI", "Framer Motion"],
+    image: "/static/images/dev-meet.png",
+    github: "https://github.com/adrianadelazzari/dev-meet",
+  },
+  {
     title: "Smart Notes",
     description:
       "A modern note-taking application with a clean UI and essential features like editing and deleting notes.",

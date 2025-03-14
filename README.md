@@ -13,8 +13,7 @@ Built with **React**, **Material UI**, and **Framer Motion**.
 
 ## 🎥 Live Demo
 
-🔗 **View Portfolio**: [My Portfolio](https://yourwebsite.com/)  
-🔗 **GitHub Repo**: [GitHub](https://github.com/yourusername/portfolio)
+🔗 **View Portfolio**: [My Portfolio](https://yourwebsite.com/)
 
 ## 📸 Screenshots
 
@@ -37,7 +36,7 @@ To run the **Portfolio Project** locally:
 ### 1️⃣ Clone the Repository
 
 ```sh
-git clone https://github.com/yourusername/portfolio.git
+git clone https://github.com/adrianadelazzari/portfolio.git
 cd portfolio
 ```
 

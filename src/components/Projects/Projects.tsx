@@ -71,7 +71,6 @@ export default function Projects() {
                 },
               }}
             >
-              {/* 🖼️ Project Image (Moves Above in Mobile) */}
               <Box
                 component="img"
                 src={project.image}
@@ -104,8 +103,6 @@ export default function Projects() {
                 >
                   {project.description}
                 </Typography>
-
-                {/* 🏷️ Tech Stack Chips */}
                 <Stack
                   direction="row"
                   justifyContent={isMobile ? "center" : "flex-start"}
@@ -128,8 +125,6 @@ export default function Projects() {
                     />
                   ))}
                 </Stack>
-
-                {/* 🔗 Buttons */}
                 <CardActions
                   sx={{
                     justifyContent: isMobile ? "center" : "flex-start",

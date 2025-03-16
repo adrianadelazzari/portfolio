@@ -6,8 +6,8 @@ Built with **React**, **Material UI**, and **Framer Motion**.
 ## 🚀 Features
 
 ✅ **Professional Portfolio UI** – Clean and elegant design  
-✅ **Fully Responsive** – Works on all devices  
-✅ **Dar/Light Modes** – Toggle between light & dark themes  
+✅ **Fully Responsive** – Works on desktop and mobile
+✅ **Dark/Light Modes** – Toggle between light & dark themes  
 ✅ **Projects Showcase** – Highlighted projects with links  
 ✅ **Contact Section** – Easy-to-access LinkedIn & GitHub
 

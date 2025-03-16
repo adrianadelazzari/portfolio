@@ -6,6 +6,7 @@ import {
   Card,
   CardContent,
   IconButton,
+  useMediaQuery,
 } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -26,6 +27,8 @@ const contacts = [
 
 export default function Contact() {
   const { theme } = useThemeProvider();
+  const isMobile = useMediaQuery("(max-width:900px)");
+
   return (
     <Box
       sx={{
@@ -35,7 +38,7 @@ export default function Contact() {
         justifyContent: "center",
         minHeight: "80vh",
         textAlign: "center",
-        padding: "20px",
+        padding: { xs: "20px", md: "40px" },
       }}
     >
       <Typography variant="h3" sx={{ marginBottom: "30px" }}>
@@ -51,19 +54,43 @@ export default function Contact() {
             key={index}
             sx={{
               display: "flex",
-              flexDirection: "row",
+              flexDirection: isMobile ? "column" : "row",
               alignItems: "center",
-              justifyContent: "space-between",
+              justifyContent: isMobile ? "center" : "space-between",
               padding: "15px 20px",
               borderRadius: "12px",
-              boxShadow: 3,
+              boxShadow: 4,
+              textAlign: isMobile ? "center" : "left",
+              transition: "0.3s",
+              "&:hover": {
+                transform: "scale(1.02)",
+                boxShadow: 6,
+              },
             }}
           >
-            <CardContent sx={{ flex: 1 }}>
+            <IconButton
+              href={contact.url}
+              target="_blank"
+              sx={{
+                backgroundColor: theme.palette.primary.main,
+                color: "white",
+                width: "50px",
+                height: "50px",
+                marginBottom: isMobile ? "10px" : "0",
+                marginRight: isMobile ? "0" : "15px",
+                "&:hover": {
+                  backgroundColor: theme.palette.primary.dark,
+                },
+              }}
+            >
+              {contact.icon}
+            </IconButton>
+
+            <CardContent sx={{ flex: 1, minWidth: "0" }}>
               <Typography
                 variant="h6"
                 fontWeight="bold"
-                sx={{ marginBottom: "10px" }}
+                sx={{ marginBottom: "10px", whiteSpace: "nowrap" }}
               >
                 {contact.name}
               </Typography>
@@ -76,22 +103,17 @@ export default function Contact() {
                     fontWeight: "bold",
                     fontSize: "0.9rem",
                     color: theme.palette.secondary.main,
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    display: "inline-block",
+                    maxWidth: "100%",
                   }}
                 >
                   {contact.url}
                 </Link>
               </Typography>
             </CardContent>
-            <IconButton
-              href={contact.url}
-              target="_blank"
-              sx={{
-                backgroundColor: theme.palette.primary.main,
-                color: "white",
-              }}
-            >
-              {contact.icon}
-            </IconButton>
           </Card>
         ))}
       </Stack>

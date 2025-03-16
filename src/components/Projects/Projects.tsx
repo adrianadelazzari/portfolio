@@ -8,6 +8,7 @@ import {
   Grid,
   Chip,
   Stack,
+  useMediaQuery,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -43,10 +44,11 @@ const projects = [
 
 export default function Projects() {
   const { theme } = useThemeProvider();
+  const isMobile = useMediaQuery("(max-width:900px)");
 
   return (
-    <Box sx={{ padding: "40px", textAlign: "center" }}>
-      <Typography variant="h3" sx={{ marginBottom: "50px" }}>
+    <Box sx={{ padding: { xs: "30px", md: "50px" }, textAlign: "center" }}>
+      <Typography variant="h3" sx={{ marginBottom: "40px" }}>
         Projects
       </Typography>
       <Grid container spacing={4} justifyContent="center">
@@ -55,31 +57,61 @@ export default function Projects() {
             <Card
               sx={{
                 display: "flex",
+                flexDirection: isMobile ? "column" : "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                paddingY: "20px",
-                paddingX: "10px",
-                width: "100%",
+                padding: "20px",
+                boxShadow: 4,
+                borderRadius: "12px",
+                backgroundColor: theme.palette.background.paper,
+                transition: "0.3s",
+                "&:hover": {
+                  transform: "scale(1.02)",
+                  boxShadow: 6,
+                },
               }}
             >
-              <CardContent>
+              {/* 🖼️ Project Image (Moves Above in Mobile) */}
+              <Box
+                component="img"
+                src={project.image}
+                alt={`${project.title} screenshot`}
+                sx={{
+                  width: isMobile ? "100%" : "250px",
+                  height: "auto",
+                  maxHeight: "200px",
+                  objectFit: "contain",
+                  borderRadius: "8px",
+                  boxShadow: 3,
+                  marginBottom: isMobile ? "15px" : "0",
+                }}
+              />
+
+              <CardContent
+                sx={{
+                  flex: 1,
+                  textAlign: "left",
+                  paddingLeft: isMobile ? "0" : "20px",
+                }}
+              >
                 <Typography variant="h5" fontWeight="bold">
                   {project.title}
                 </Typography>
                 <Typography
                   variant="body2"
                   color="text.secondary"
-                  sx={{ marginY: "20px" }}
+                  sx={{ marginY: "15px" }}
                 >
                   {project.description}
                 </Typography>
+
+                {/* 🏷️ Tech Stack Chips */}
                 <Stack
                   direction="row"
-                  justifyContent="center"
+                  justifyContent={isMobile ? "center" : "flex-start"}
+                  flexWrap="wrap"
                   spacing={1}
-                  sx={{
-                    marginTop: "25px",
-                  }}
+                  sx={{ marginTop: "10px" }}
                 >
                   {project.techStack.map((tech, idx) => (
                     <Chip
@@ -96,10 +128,12 @@ export default function Projects() {
                     />
                   ))}
                 </Stack>
+
+                {/* 🔗 Buttons */}
                 <CardActions
                   sx={{
-                    justifyContent: "center",
-                    marginTop: "20px",
+                    justifyContent: isMobile ? "center" : "flex-start",
+                    marginTop: "15px",
                     gap: "10px",
                   }}
                 >
@@ -133,20 +167,6 @@ export default function Projects() {
                   )}
                 </CardActions>
               </CardContent>
-              <Box
-                component="img"
-                src={project.image}
-                alt={`${project.title} screenshot`}
-                sx={{
-                  maxWidth: "280px",
-                  height: "220px",
-                  objectFit: "contain",
-                  borderRadius: "10px",
-                  boxShadow: 3,
-                  flexShrink: 0,
-                  marginRight: "20px",
-                }}
-              />
             </Card>
           </Grid>
         ))}

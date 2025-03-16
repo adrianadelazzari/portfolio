@@ -1,12 +1,7 @@
 import { Box, Typography, Button, Avatar, Stack } from "@mui/material";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import { useThemeProvider } from "../../theme/ThemeProvider";
 
 export default function Home() {
-  const navigate = useNavigate();
-  const { theme, toggleDarkMode } = useThemeProvider();
-
   return (
     <Box
       sx={{
@@ -16,6 +11,7 @@ export default function Home() {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
+        px: { xs: 2, sm: 4, md: 6 },
       }}
     >
       <motion.div
@@ -23,61 +19,84 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <Stack direction="row" spacing={8}>
-          <Stack>
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          spacing={{ xs: 3, md: 8 }}
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Avatar
+            src="/static/images/profile_pic.png"
+            sx={{
+              width: { xs: 180, md: 250 },
+              height: { xs: 180, md: 250 },
+              order: { xs: -1, md: 0 },
+            }}
+          />
+          <Stack sx={{ textAlign: "center" }}>
             <Typography
-              variant="h2"
+              variant="h4"
               fontWeight={600}
-              sx={{ marginBottom: "30px" }}
+              sx={{
+                marginBottom: "20px",
+                fontSize: { xs: "2rem", md: "3rem" },
+              }}
             >
               Hi👋, I'm Adriana de Lazzari
             </Typography>
-            <Typography variant="h5" color="gray" sx={{ marginBottom: "30px" }}>
+            <Typography
+              variant="h6"
+              color="gray"
+              sx={{
+                marginBottom: "20px",
+                fontSize: { xs: "1.2rem", md: "1.5rem" },
+              }}
+            >
               Frontend Engineer | UI/UX Enthusiast
             </Typography>
-            <Typography variant="body1" sx={{ marginBottom: "40px" }}>
+            <Typography
+              variant="body1"
+              sx={{
+                marginBottom: "30px",
+                fontSize: { xs: "1rem", md: "1.15rem" },
+              }}
+            >
               I build seamless, scalable, and beautiful web experiences using
               modern technologies.
             </Typography>
             <Stack
-              direction="row"
-              spacing={4}
-              sx={{ justifyContent: "center", marginTop: "15px" }}
+              direction={{ xs: "column", sm: "row" }}
+              spacing={2}
+              sx={{ justifyContent: "center", marginTop: "10px" }}
             >
               <Button
                 variant="contained"
                 size="large"
                 sx={{
-                  backgroundColor: theme.palette.primary.main,
+                  backgroundColor: "#462A67",
                   color: "white",
-                  padding: "10px 20px",
-                  fontSize: "18px",
-                  marginTop: "50px",
+                  padding: { xs: "8px 16px", md: "10px 20px" },
+                  fontSize: { xs: "16px", md: "18px" },
+                  width: { xs: "100%", sm: "auto" },
                 }}
-                onClick={() => navigate("/projects")}
               >
-                View my work
+                View My Work
               </Button>
               <Button
                 variant="contained"
                 size="large"
                 sx={{
-                  backgroundColor: theme.palette.primary.main,
+                  backgroundColor: "#462A67",
                   color: "white",
-                  padding: "10px 20px",
-                  fontSize: "18px",
-                  marginTop: "50px",
+                  padding: { xs: "8px 16px", md: "10px 20px" },
+                  fontSize: { xs: "16px", md: "18px" },
+                  width: { xs: "100%", sm: "auto" },
                 }}
-                onClick={() => navigate("/contact")}
               >
-                Let's connect!
+                Let's Connect!
               </Button>
             </Stack>
           </Stack>
-          <Avatar
-            src="/static/images/profile_pic.png"
-            sx={{ width: 200, height: 200 }}
-          />
         </Stack>
       </motion.div>
     </Box>

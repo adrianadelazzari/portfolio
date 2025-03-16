@@ -1,11 +1,5 @@
-import { Box, Typography, Card, CardContent } from "@mui/material";
+import { Box, Typography, Card, CardContent, Grid, Stack } from "@mui/material";
 import WorkIcon from "@mui/icons-material/Work";
-import Timeline from "@mui/lab/Timeline";
-import TimelineItem from "@mui/lab/TimelineItem";
-import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import TimelineConnector from "@mui/lab/TimelineConnector";
-import TimelineContent from "@mui/lab/TimelineContent";
-import TimelineDot from "@mui/lab/TimelineDot";
 import { useThemeProvider } from "../../theme/ThemeProvider";
 
 const experiences = [
@@ -61,57 +55,73 @@ export default function Experience() {
   const { theme } = useThemeProvider();
 
   return (
-    <Box sx={{ padding: "40px", textAlign: "center" }}>
-      <Typography variant="h3" sx={{ marginBottom: "20px" }}>
+    <Box sx={{ padding: { xs: "30px", md: "60px" }, textAlign: "center" }}>
+      <Typography
+        variant="h3"
+        sx={{
+          marginBottom: 5,
+          fontSize: { xs: "2rem", md: "2.5rem" },
+          fontWeight: "bold",
+        }}
+      >
         Work Experience
       </Typography>
-      <Timeline position="alternate">
+      <Grid container spacing={4} justifyContent="center">
         {experiences.map((job, index) => (
-          <TimelineItem key={index}>
-            <TimelineSeparator>
-              <TimelineDot sx={{ backgroundColor: theme.palette.primary.main }}>
-                <WorkIcon />
-              </TimelineDot>
-              {index < experiences.length - 1 && <TimelineConnector />}
-            </TimelineSeparator>
-            <TimelineContent>
-              <Card
-                sx={{
-                  marginBottom: "30px",
-                  textAlign: "left",
-                  padding: "30px",
-                  maxWidth: "700px",
-                  boxShadow: 3,
-                  borderRadius: "12px",
-                }}
-              >
-                <CardContent>
-                  <Typography variant="h5" fontWeight="bold">
-                    {job.title}
-                  </Typography>
-                  <Typography variant="subtitle1" color="text.secondary">
-                    {job.company} - {job.location}
-                  </Typography>
-                  <Typography
-                    variant="subtitle2"
-                    color="gray"
-                    sx={{ marginBottom: "10px" }}
-                  >
-                    {job.duration}
-                  </Typography>
-                  <ul style={{ paddingLeft: "20px" }}>
-                    {job.achievements.map((achievement, idx) => (
-                      <li key={idx}>
-                        <Typography variant="body1">{achievement}</Typography>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </TimelineContent>
-          </TimelineItem>
+          <Grid item xs={12} sm={6} key={index} sx={{ display: "flex" }}>
+            <Card
+              sx={{
+                textAlign: "left",
+                padding: "25px",
+                boxShadow: 4,
+                borderRadius: "12px",
+                backgroundColor: theme.palette.background.paper,
+                transition: "0.3s",
+                "&:hover": {
+                  transform: "scale(1.02)",
+                  boxShadow: 6,
+                },
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                width: "100%",
+              }}
+            >
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Stack direction="row" spacing={2} alignItems="center">
+                  <WorkIcon color="primary" sx={{ fontSize: 40 }} />
+                  <Box>
+                    <Typography variant="h5" fontWeight="bold">
+                      {job.title}
+                    </Typography>
+                    <Typography variant="subtitle1" color="text.secondary">
+                      {job.company} - {job.location}
+                    </Typography>
+                    <Typography
+                      variant="subtitle2"
+                      color="gray"
+                      sx={{ marginBottom: "10px" }}
+                    >
+                      {job.duration}
+                    </Typography>
+                  </Box>
+                </Stack>
+                <Stack spacing={1} sx={{ marginTop: 2 }}>
+                  {job.achievements.map((achievement, idx) => (
+                    <Typography
+                      key={idx}
+                      variant="body1"
+                      sx={{ fontSize: { xs: "0.9rem", md: "1rem" } }}
+                    >
+                      • {achievement}
+                    </Typography>
+                  ))}
+                </Stack>
+              </CardContent>
+            </Card>
+          </Grid>
         ))}
-      </Timeline>
+      </Grid>
     </Box>
   );
 }

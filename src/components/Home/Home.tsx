@@ -1,7 +1,10 @@
 import { Box, Typography, Button, Avatar, Stack } from "@mui/material";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -79,6 +82,7 @@ export default function Home() {
                   fontSize: { xs: "16px", md: "18px" },
                   width: { xs: "100%", sm: "auto" },
                 }}
+                onClick={() => navigate("/projects")}
               >
                 View My Work
               </Button>
@@ -92,6 +96,7 @@ export default function Home() {
                   fontSize: { xs: "16px", md: "18px" },
                   width: { xs: "100%", sm: "auto" },
                 }}
+                onClick={() => navigate("/contact")}
               >
                 Let's Connect!
               </Button>

@@ -34,10 +34,17 @@ const Navbar = () => {
 
   return (
     <AppBar
-      position="static"
-      sx={{ backgroundColor: theme.palette.primary.main }}
+      position="fixed"
+      elevation={0}
+      sx={{
+        paddingX: 4,
+        paddingY: 2,
+        width: "100%",
+        backgroundColor: "background.default",
+      }}
     >
-      <Toolbar sx={{ justifyContent: "space-between" }}>
+      <Toolbar sx={{ justifyContent: "space-between", alignItems: "center" }}>
+        {/* Mobile menu icon */}
         <IconButton
           edge="start"
           color="inherit"
@@ -47,7 +54,16 @@ const Navbar = () => {
         >
           <MenuIcon fontSize="large" />
         </IconButton>
-        <Toolbar sx={{ display: { xs: "none", md: "flex" }, gap: "10px" }}>
+
+        {/* Centered navigation buttons */}
+        <Box
+          sx={{
+            flex: 1,
+            display: { xs: "none", md: "flex" },
+            justifyContent: "center",
+            gap: "10px",
+          }}
+        >
           {navItems.map((item) => (
             <Button
               key={item.path}
@@ -56,32 +72,58 @@ const Navbar = () => {
               sx={{
                 color:
                   location.pathname === item.path
-                    ? theme.palette.secondary.light
+                    ? theme.palette.mode === "light"
+                      ? "#462A67"
+                      : "#BFA2DB"
+                    : theme.palette.mode === "light"
+                    ? "black"
                     : "white",
                 fontWeight: location.pathname === item.path ? "bold" : "normal",
                 backgroundColor:
                   location.pathname === item.path
-                    ? "rgba(255, 255, 255, 0.2)"
+                    ? theme.palette.mode === "light"
+                      ? "rgba(70, 42, 103, 0.1)"
+                      : "rgba(191, 162, 219, 0.15)"
                     : "transparent",
+                borderBottom:
+                  location.pathname === item.path
+                    ? `2px solid ${
+                        theme.palette.mode === "light" ? "#462A67" : "#BFA2DB"
+                      }`
+                    : "none",
                 borderRadius: "8px",
                 padding: "6px 12px",
                 transition: "0.3s",
                 "&:hover": {
-                  backgroundColor: "rgba(255, 255, 255, 0.3)",
+                  backgroundColor:
+                    location.pathname === item.path
+                      ? theme.palette.mode === "light"
+                        ? "rgba(70, 42, 103, 0.15)"
+                        : "rgba(191, 162, 219, 0.25)"
+                      : theme.palette.mode === "light"
+                      ? "rgba(0, 0, 0, 0.05)"
+                      : "rgba(255, 255, 255, 0.1)",
                 },
               }}
             >
               {item.label}
             </Button>
           ))}
-        </Toolbar>
+        </Box>
+
+        {/* Dark mode toggle */}
         <IconButton
           color="inherit"
           onClick={toggleDarkMode}
-          sx={{ display: { xs: "none", md: "block" } }}
+          sx={{
+            display: { xs: "none", md: "block" },
+            color: theme.palette.mode === "light" ? "#000" : "#fff",
+          }}
         >
           {theme.palette.mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
         </IconButton>
+
+        {/* Drawer for mobile menu */}
         <Drawer
           anchor="left"
           open={mobileOpen}

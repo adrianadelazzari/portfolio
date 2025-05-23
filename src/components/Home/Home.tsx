@@ -28,31 +28,21 @@ export default function Home() {
           alignItems="center"
           justifyContent="center"
         >
-          <Avatar
-            src="/static/images/profile_pic.png"
-            sx={{
-              width: { xs: 180, md: 250 },
-              height: { xs: 180, md: 250 },
-              order: { xs: -1, md: 0 },
-            }}
-          />
-          <Stack sx={{ textAlign: "center" }}>
+          <Stack sx={{ textAlign: "start" }}>
             <Typography
-              variant="h4"
+              variant="h3"
               fontWeight={600}
               sx={{
                 marginBottom: "20px",
-                fontSize: { xs: "2rem", md: "3rem" },
               }}
             >
-              Hi👋, I'm Adriana de Lazzari
+              Hi, I'm Adriana de Lazzari👋
             </Typography>
             <Typography
-              variant="h6"
+              variant="h4"
               color="gray"
               sx={{
                 marginBottom: "20px",
-                fontSize: { xs: "1.2rem", md: "1.5rem" },
               }}
             >
               Frontend Engineer | UI/UX Enthusiast
@@ -70,7 +60,7 @@ export default function Home() {
             <Stack
               direction={{ xs: "column", sm: "row" }}
               spacing={2}
-              sx={{ justifyContent: "center", marginTop: "10px" }}
+              sx={{ justifyContent: "start", marginTop: "10px" }}
             >
               <Button
                 variant="contained"
@@ -81,11 +71,20 @@ export default function Home() {
                   padding: { xs: "8px 16px", md: "10px 20px" },
                   fontSize: { xs: "16px", md: "18px" },
                   width: { xs: "100%", sm: "auto" },
+                  border: "2px solid #462A67",
+                  borderRadius: "12px",
+                  boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
+                  transition: "0.3s ease",
+                  "&:hover": {
+                    backgroundColor: "#5a3684",
+                    boxShadow: "0px 6px 16px rgba(0, 0, 0, 0.3)",
+                  },
                 }}
                 onClick={() => navigate("/projects")}
               >
                 View My Work
               </Button>
+
               <Button
                 variant="contained"
                 size="large"
@@ -95,6 +94,14 @@ export default function Home() {
                   padding: { xs: "8px 16px", md: "10px 20px" },
                   fontSize: { xs: "16px", md: "18px" },
                   width: { xs: "100%", sm: "auto" },
+                  border: "2px solid #462A67",
+                  borderRadius: "12px",
+                  boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
+                  transition: "0.3s ease",
+                  "&:hover": {
+                    backgroundColor: "#5a3684",
+                    boxShadow: "0px 6px 16px rgba(0, 0, 0, 0.3)",
+                  },
                 }}
                 onClick={() => navigate("/contact")}
               >
@@ -102,6 +109,23 @@ export default function Home() {
               </Button>
             </Stack>
           </Stack>
+          <Box
+            sx={{
+              border: "1px solid #9C27B0",
+              borderRadius: "50%",
+              padding: "20px",
+              display: "inline-block",
+              order: { xs: -1, md: 0 },
+            }}
+          >
+            <Avatar
+              src="/static/images/profile_pic.png"
+              sx={{
+                width: { xs: 200, md: 280 },
+                height: { xs: 200, md: 280 },
+              }}
+            />
+          </Box>
         </Stack>
       </motion.div>
     </Box>

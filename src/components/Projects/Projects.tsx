@@ -16,6 +16,14 @@ import { useThemeProvider } from "../../theme/ThemeProvider";
 
 const projects = [
   {
+    title: "Trading Dashboard",
+    description:
+      "A crypto trading interface featuring asset tabs for BTC and ETH, live order book, interactive depth chart, order entry form, and trade history.",
+    techStack: ["React", "Material UI", "Express.js"],
+    image: "/static/images/trading-dashboard.png",
+    github: "https://github.com/adrianadelazzari/trading-dashboard",
+  },
+  {
     title: "Domino Vision 3000",
     description:
       "A React-based web app for counting and solving domino sets directly in the browser.",

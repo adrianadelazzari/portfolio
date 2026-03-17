@@ -15,13 +15,22 @@ import { useThemeProvider } from "../../theme/ThemeProvider";
 const contacts = [
   {
     name: "LinkedIn",
-    url: "https://www.linkedin.com/in/adrianalazzari",
+    url: "https://www.linkedin.com/in/adrianadelazzari",
     icon: <LinkedInIcon fontSize="large" />,
   },
   {
     name: "GitHub",
     url: "https://github.com/adrianadelazzari",
     icon: <GitHubIcon fontSize="large" />,
+  },
+  {
+    name: "Medium",
+    url: "https://adrianadelazzari.medium.com",
+    icon: (
+      <Typography fontWeight="bold" variant="h4">
+        M
+      </Typography>
+    ),
   },
 ];
 

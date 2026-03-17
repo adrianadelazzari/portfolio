@@ -8,7 +8,6 @@ const technologies = [
   "TypeScript",
   "Material UI",
   "Accessibility",
-  "Performance",
 ];
 
 const primaryButtonStyles = {

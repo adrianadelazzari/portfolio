@@ -19,18 +19,19 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import { Link, useLocation } from "react-router-dom";
 import { useThemeProvider } from "../../theme/ThemeProvider";
 
+const navItems = [
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
+  { label: "Experience", path: "/experience" },
+  { label: "Projects", path: "/projects" },
+  { label: "Articles", path: "/articles" },
+  { label: "Contact", path: "/contact" },
+];
+
 const Navbar = () => {
   const { theme, toggleDarkMode } = useThemeProvider();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  const navItems = [
-    { label: "Home", path: "/" },
-    { label: "About", path: "/about" },
-    { label: "Experience", path: "/experience" },
-    { label: "Projects", path: "/projects" },
-    { label: "Contact", path: "/contact" },
-  ];
 
   return (
     <AppBar
@@ -40,7 +41,12 @@ const Navbar = () => {
         paddingX: 4,
         paddingY: 2,
         width: "100%",
-        backgroundColor: "background.default",
+        backgroundColor:
+          theme.palette.mode === "dark"
+            ? "rgba(18, 18, 18, 0.85)"
+            : "rgba(255, 255, 255, 0.85)",
+        backdropFilter: "blur(10px)",
+        borderBottom: `1px solid ${theme.palette.divider}`,
       }}
     >
       <Toolbar sx={{ justifyContent: "space-between", alignItems: "center" }}>
@@ -69,6 +75,9 @@ const Navbar = () => {
               key={item.path}
               component={Link}
               to={item.path}
+              aria-current={
+                location.pathname === item.path ? "page" : undefined
+              }
               sx={{
                 color:
                   location.pathname === item.path
@@ -76,8 +85,8 @@ const Navbar = () => {
                       ? "#462A67"
                       : "#BFA2DB"
                     : theme.palette.mode === "light"
-                    ? "black"
-                    : "white",
+                      ? "black"
+                      : "white",
                 fontWeight: location.pathname === item.path ? "bold" : "normal",
                 backgroundColor:
                   location.pathname === item.path
@@ -101,8 +110,8 @@ const Navbar = () => {
                         ? "rgba(70, 42, 103, 0.15)"
                         : "rgba(191, 162, 219, 0.25)"
                       : theme.palette.mode === "light"
-                      ? "rgba(0, 0, 0, 0.05)"
-                      : "rgba(255, 255, 255, 0.1)",
+                        ? "rgba(0, 0, 0, 0.05)"
+                        : "rgba(255, 255, 255, 0.1)",
                 },
               }}
             >
@@ -115,8 +124,12 @@ const Navbar = () => {
         <IconButton
           color="inherit"
           onClick={toggleDarkMode}
+          aria-label={
+            theme.palette.mode === "dark"
+              ? "Switch to light mode"
+              : "Switch to dark mode"
+          }
           sx={{
-            display: { xs: "none", md: "block" },
             color: theme.palette.mode === "light" ? "#000" : "#fff",
           }}
         >
@@ -172,6 +185,7 @@ const Navbar = () => {
               <Switch
                 checked={theme.palette.mode === "dark"}
                 onChange={toggleDarkMode}
+                inputProps={{ "aria-label": "Toggle dark mode" }}
               />
               <LightModeIcon />
             </Box>

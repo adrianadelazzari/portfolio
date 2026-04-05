@@ -23,7 +23,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
           mode: darkMode ? "dark" : "light",
           primary: {
             main: "#673AB7",
-            light: "#673AB7",
+            light: "#9C6FD6",
             dark: "#331A4F",
           },
           secondary: {

@@ -12,6 +12,7 @@ const Footer = () => {
         mt: "auto",
         bgcolor: "background.default",
         width: "100%",
+        borderTop: `1px solid ${theme.palette.divider}`,
       }}
     >
       <Typography

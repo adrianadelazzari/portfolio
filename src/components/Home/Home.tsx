@@ -1,65 +1,99 @@
 import { Box, Typography, Button, Avatar, Stack, Chip } from "@mui/material";
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { motion, useReducedMotion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { useThemeProvider } from "../../theme/ThemeProvider";
 
-const technologies = [
-  "React",
-  "Angular",
-  "TypeScript",
-  "Material UI",
-  "Accessibility",
-];
-
-const primaryButtonStyles = {
-  backgroundColor: "#9C27B0",
-  color: "white",
-  px: { xs: 2.5, md: 3 },
-  py: 1.25,
-  fontSize: { xs: "16px", md: "18px" },
-  width: { xs: "100%", sm: "auto" },
-  borderRadius: "12px",
-  boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
-  transition: "0.3s ease",
-  "&:hover": {
-    backgroundColor: "#5a3684",
-    boxShadow: "0px 6px 16px rgba(0, 0, 0, 0.3)",
-  },
-};
+const technologies = ["React", "Angular", "Vue.js", "TypeScript", "Storybook"];
 
 export default function Home() {
-  const navigate = useNavigate();
+  const { theme } = useThemeProvider();
+  const prefersReducedMotion = useReducedMotion();
+
+  const accentColor =
+    theme.palette.mode === "dark" ? "#B085F5" : theme.palette.primary.main;
+
+  const primaryButtonStyles = {
+    backgroundColor: theme.palette.primary.main,
+    color: "white",
+    px: { xs: 2.5, md: 3 },
+    py: 1.25,
+    fontSize: { xs: "16px", md: "18px" },
+    width: { xs: "100%", sm: "auto" },
+    borderRadius: "12px",
+    boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
+    transition: "0.3s ease",
+    "&:hover": {
+      backgroundColor: theme.palette.primary.dark,
+      boxShadow: "0px 6px 16px rgba(0, 0, 0, 0.3)",
+    },
+  };
+
+  const isDark = theme.palette.mode === "dark";
 
   return (
     <Box
       sx={{
         display: "flex",
         alignItems: "center",
-        px: { xs: 3, sm: 5, md: 8, lg: 12 },
+        justifyContent: "center",
+        minHeight: "calc(100vh - 64px)",
         py: { xs: 6, md: 8 },
+        position: "relative",
+        overflow: "hidden",
+        // Dot grid pattern
+        backgroundImage: `radial-gradient(${isDark ? "rgba(176,133,245,0.18)" : "rgba(103,58,183,0.12)"} 1px, transparent 1px)`,
+        backgroundSize: "28px 28px",
       }}
     >
+      {/* Radial glow — top left behind text */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: "-10%",
+          left: "-5%",
+          width: { xs: "400px", md: "600px" },
+          height: { xs: "400px", md: "600px" },
+          borderRadius: "50%",
+          background: `radial-gradient(circle, ${isDark ? "rgba(176,133,245,0.12)" : "rgba(103,58,183,0.08)"} 0%, transparent 70%)`,
+          pointerEvents: "none",
+        }}
+      />
+      {/* Radial glow — bottom right behind avatar */}
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: "-10%",
+          right: "-5%",
+          width: { xs: "350px", md: "550px" },
+          height: { xs: "350px", md: "550px" },
+          borderRadius: "50%",
+          background: `radial-gradient(circle, ${isDark ? "rgba(176,133,245,0.1)" : "rgba(103,58,183,0.07)"} 0%, transparent 70%)`,
+          pointerEvents: "none",
+        }}
+      />
+
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
+        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.7 }}
         style={{ width: "100%" }}
       >
         <Stack
           direction={{ xs: "column", md: "row" }}
-          spacing={{ xs: 5, md: 10 }}
+          spacing={{ xs: 5, md: 8 }}
           alignItems="center"
-          justifyContent="space-between"
+          justifyContent="center"
           sx={{ width: "100%" }}
         >
           <Box
             sx={{
               flex: 1,
-              maxWidth: { xs: "100%", md: "720px" },
+              maxWidth: { xs: "100%", md: "560px" },
               textAlign: { xs: "center", md: "left" },
             }}
           >
             <Typography variant="h3" fontWeight={700} sx={{ mb: 2 }}>
-              Hi, I'm Adriana de Lazzari 👋
+              Hi, I'm Adriana 👋
             </Typography>
 
             <Typography
@@ -67,7 +101,7 @@ export default function Home() {
               sx={{
                 mb: 3,
                 color: "text.secondary",
-                maxWidth: { xs: "100%", md: "680px" },
+                maxWidth: "100%",
                 mx: { xs: "auto", md: 0 },
                 lineHeight: 1.4,
               }}
@@ -81,7 +115,7 @@ export default function Home() {
               sx={{
                 mb: 4,
                 fontSize: { xs: "1rem", md: "1.15rem" },
-                maxWidth: { xs: "100%", md: "620px" },
+                maxWidth: "100%",
                 mx: { xs: "auto", md: 0 },
                 lineHeight: 1.8,
               }}
@@ -100,22 +134,20 @@ export default function Home() {
                 justifyContent: { xs: "center", md: "flex-start" },
               }}
             >
-              {technologies.map(function (tech) {
-                return (
-                  <Chip
-                    key={tech}
-                    label={tech}
-                    variant="outlined"
-                    sx={{
-                      borderColor: "rgba(156, 39, 176, 0.35)",
-                      color: "text.secondary",
-                      backgroundColor: "rgba(156, 39, 176, 0.08)",
-                      fontSize: "0.95rem",
-                      height: "36px",
-                    }}
-                  />
-                );
-              })}
+              {technologies.map((tech) => (
+                <Chip
+                  key={tech}
+                  label={tech}
+                  variant="outlined"
+                  sx={{
+                    borderColor: accentColor,
+                    color: accentColor,
+                    backgroundColor: `${accentColor}14`,
+                    fontSize: "0.95rem",
+                    height: "36px",
+                  }}
+                />
+              ))}
             </Stack>
 
             <Stack
@@ -127,30 +159,32 @@ export default function Home() {
               }}
             >
               <Button
+                component={Link}
+                to="/projects"
                 variant="contained"
                 size="large"
                 sx={primaryButtonStyles}
-                onClick={() => navigate("/projects")}
               >
                 Explore Projects
               </Button>
 
               <Button
+                component={Link}
+                to="/contact"
                 variant="outlined"
                 size="large"
                 sx={{
                   ...primaryButtonStyles,
                   backgroundColor: "transparent",
-                  color: "#9C27B0",
-                  border: "2px solid #9C27B0",
+                  color: accentColor,
+                  border: `2px solid ${accentColor}`,
                   boxShadow: "none",
                   "&:hover": {
-                    backgroundColor: "rgba(156, 39, 176, 0.08)",
+                    backgroundColor: `${accentColor}14`,
                     boxShadow: "none",
-                    border: "2px solid #9C27B0",
+                    border: `2px solid ${accentColor}`,
                   },
                 }}
-                onClick={() => navigate("/contact")}
               >
                 Contact Me
               </Button>
@@ -169,8 +203,8 @@ export default function Home() {
               sx={{
                 borderRadius: "50%",
                 p: "14px",
-                background: "linear-gradient(135deg, #9C27B0, #462A67)",
-                boxShadow: "0px 10px 35px rgba(156, 39, 176, 0.22)",
+                background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
+                boxShadow: `0px 10px 35px ${theme.palette.primary.main}38`,
                 display: "inline-flex",
               }}
             >

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "./theme/ThemeProvider";
 import Container from "@mui/material/Container";
 import {
@@ -87,6 +88,7 @@ const App = () => {
           </Container>
           <Footer />
         </Box>
+        <Analytics />
       </Router>
     </ThemeProvider>
   );

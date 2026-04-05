@@ -12,6 +12,7 @@ import {
   Divider,
   Switch,
   Box,
+  Tooltip,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -121,20 +122,22 @@ const Navbar = () => {
         </Box>
 
         {/* Dark mode toggle */}
-        <IconButton
-          color="inherit"
-          onClick={toggleDarkMode}
-          aria-label={
-            theme.palette.mode === "dark"
-              ? "Switch to light mode"
-              : "Switch to dark mode"
-          }
-          sx={{
-            color: theme.palette.mode === "light" ? "#000" : "#fff",
-          }}
-        >
-          {theme.palette.mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
-        </IconButton>
+        <Tooltip title={theme.palette.mode === "dark" ? "Switch to light mode" : "Switch to dark mode"}>
+          <IconButton
+            color="inherit"
+            onClick={toggleDarkMode}
+            aria-label={
+              theme.palette.mode === "dark"
+                ? "Switch to light mode"
+                : "Switch to dark mode"
+            }
+            sx={{
+              color: theme.palette.mode === "light" ? "#000" : "#fff",
+            }}
+          >
+            {theme.palette.mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
+          </IconButton>
+        </Tooltip>
 
         {/* Drawer for mobile menu */}
         <Drawer

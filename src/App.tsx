@@ -20,7 +20,7 @@ import Articles from "./components/Articles/Articles";
 import { Box, Typography, Button } from "@mui/material";
 
 const routeTitles: Record<string, string> = {
-  "/": "Adriana de Lazzari — Frontend Engineer",
+  "/": "Adriana de Lazzari",
   "/about": "About | Adriana de Lazzari",
   "/experience": "Experience | Adriana de Lazzari",
   "/projects": "Projects | Adriana de Lazzari",

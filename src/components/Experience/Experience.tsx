@@ -1,4 +1,11 @@
-import { Box, Typography, Card, CardContent, Chip, Divider } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  Chip,
+  Divider,
+} from "@mui/material";
 import WorkIcon from "@mui/icons-material/Work";
 import { useThemeProvider } from "../../theme/ThemeProvider";
 import { motion, useReducedMotion } from "framer-motion";
@@ -6,7 +13,17 @@ import { motion, useReducedMotion } from "framer-motion";
 const skills = [
   {
     category: "Frontend",
-    items: ["React", "Angular", "TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3", "Redux", "Tailwind CSS", "Material UI"],
+    items: [
+      "React",
+      "Angular",
+      "TypeScript",
+      "JavaScript (ES6+)",
+      "HTML5",
+      "CSS3",
+      "Redux",
+      "Tailwind CSS",
+      "Material UI",
+    ],
   },
   {
     category: "Backend & APIs",
@@ -22,7 +39,11 @@ const skills = [
   },
   {
     category: "Architecture",
-    items: ["Micro-frontends", "Component Libraries", "Performance Optimization"],
+    items: [
+      "Micro-frontends",
+      "Component Libraries",
+      "Performance Optimization",
+    ],
   },
   {
     category: "Testing",
@@ -48,10 +69,17 @@ const skills = [
 
 const experiences = [
   {
-    title: "Frontend Engineer",
+    title: "Full Stack Software Developer",
+    company: "Autodesk",
+    location: "Canada",
+    duration: "May 2026 - Present",
+    achievements: [],
+  },
+  {
+    title: "Frontend Software Developer",
     company: "AIG",
-    location: "Kitchener, ON, Canada (Remote)",
-    duration: "Nov 2023 - Present",
+    location: "Canada",
+    duration: "Nov 2023 - May 2026",
     achievements: [
       "Develop and modernize enterprise risk and underwriting platforms used by global underwriting teams to evaluate large volumes of policy and financial risk data.",
       "Architect and implement scalable micro-frontend architectures using React, TypeScript, Redux, Material UI, Webpack, and Single-SPA to support modular development across large enterprise web applications.",
@@ -64,9 +92,9 @@ const experiences = [
     ],
   },
   {
-    title: "Frontend Engineer",
+    title: "Frontend Software Developer",
     company: "Validus Research Inc.",
-    location: "Waterloo, ON, Canada (Hybrid)",
+    location: "Canada",
     duration: "Feb 2023 - Nov 2023",
     achievements: [
       "Built and modernized frontend applications for financial analytics platforms using React.js, Angular, and Vue.js, supporting large-scale underwriting and portfolio analysis workflows.",
@@ -79,9 +107,9 @@ const experiences = [
     ],
   },
   {
-    title: "Frontend Engineer",
+    title: "Frontend Software Developer",
     company: "RadicalX",
-    location: "Kitchener, ON, Canada (Remote)",
+    location: "Canada",
     duration: "Nov 2022 - Feb 2023",
     achievements: [
       "Developed frontend features for a developer education platform, building interactive tools and dashboards that supported online courses and hands-on learning experiences for interns.",
@@ -92,9 +120,9 @@ const experiences = [
     ],
   },
   {
-    title: "Frontend Engineer Intern",
+    title: "Frontend Software Developer Intern",
     company: "RadicalX",
-    location: "Kitchener, ON, Canada (Remote)",
+    location: "Canada",
     duration: "Sep 2022 - Nov 2022",
     achievements: [
       "Developed reusable UI components using React, TypeScript, JavaScript, HTML5, and CSS3 to support consistent interface patterns.",
@@ -104,7 +132,7 @@ const experiences = [
   {
     title: "Technical Support Specialist",
     company: "3sHealth",
-    location: "Kitchener, ON, Canada (Remote)",
+    location: "Canada",
     duration: "Oct 2022 - Nov 2022",
     achievements: [
       "Assisted in the migration of 80+ legacy systems to a modern healthcare platform used by the Government of Saskatchewan, supporting workforce operations including shift management and payment processing.",
@@ -129,224 +157,254 @@ export default function Experience() {
         backgroundSize: "28px 28px",
       }}
     >
-      <Box sx={{ position: "absolute", top: "-10%", left: "-5%", width: { xs: "400px", md: "600px" }, height: { xs: "400px", md: "600px" }, borderRadius: "50%", background: `radial-gradient(circle, ${isDark ? "rgba(176,133,245,0.12)" : "rgba(103,58,183,0.08)"} 0%, transparent 70%)`, pointerEvents: "none" }} />
-      <Box sx={{ position: "absolute", bottom: "-10%", right: "-5%", width: { xs: "350px", md: "550px" }, height: { xs: "350px", md: "550px" }, borderRadius: "50%", background: `radial-gradient(circle, ${isDark ? "rgba(176,133,245,0.10)" : "rgba(103,58,183,0.07)"} 0%, transparent 70%)`, pointerEvents: "none" }} />
+      <Box
+        sx={{
+          position: "absolute",
+          top: "-10%",
+          left: "-5%",
+          width: { xs: "400px", md: "600px" },
+          height: { xs: "400px", md: "600px" },
+          borderRadius: "50%",
+          background: `radial-gradient(circle, ${isDark ? "rgba(176,133,245,0.12)" : "rgba(103,58,183,0.08)"} 0%, transparent 70%)`,
+          pointerEvents: "none",
+        }}
+      />
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: "-10%",
+          right: "-5%",
+          width: { xs: "350px", md: "550px" },
+          height: { xs: "350px", md: "550px" },
+          borderRadius: "50%",
+          background: `radial-gradient(circle, ${isDark ? "rgba(176,133,245,0.10)" : "rgba(103,58,183,0.07)"} 0%, transparent 70%)`,
+          pointerEvents: "none",
+        }}
+      />
       <motion.div
         initial={prefersReducedMotion ? false : { opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.7 }}
         style={{ width: "100%" }}
       >
-      <Box
-        sx={{
-          py: { xs: 6, md: 8 },
-          px: { xs: 2, sm: 4 },
-          maxWidth: "1000px",
-          mx: "auto",
-        }}
-      >
-        <Typography
-          variant="h3"
-          fontWeight="bold"
+        <Box
           sx={{
-            mb: 6,
-            textAlign: "center",
-            fontSize: { xs: "2rem", md: "2.5rem" },
+            py: { xs: 6, md: 8 },
+            px: { xs: 2, sm: 4 },
+            maxWidth: "1000px",
+            mx: "auto",
           }}
         >
-          Work Experience
-        </Typography>
+          <Typography
+            variant="h3"
+            fontWeight="bold"
+            sx={{
+              mb: 6,
+              textAlign: "center",
+              fontSize: { xs: "2rem", md: "2.5rem" },
+            }}
+          >
+            Work Experience
+          </Typography>
 
-        {experiences.map((job, index) => {
-          const isCurrentRole = index === 0;
-          const isLast = index === experiences.length - 1;
+          {experiences.map((job, index) => {
+            const isCurrentRole = index === 0;
+            const isLast = index === experiences.length - 1;
 
-          return (
-            <Box
-              key={`${job.company}-${job.title}`}
-              sx={{ display: "flex", gap: { xs: 2, md: 3 } }}
-            >
-              {/* Timeline column: dot + connector line */}
+            return (
               <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  flexShrink: 0,
-                }}
+                key={`${job.company}-${job.title}`}
+                sx={{ display: "flex", gap: { xs: 2, md: 3 } }}
               >
+                {/* Timeline column: dot + connector line */}
                 <Box
                   sx={{
-                    width: { xs: 36, md: 44 },
-                    height: { xs: 36, md: 44 },
-                    borderRadius: "50%",
-                    backgroundColor: isCurrentRole
-                      ? theme.palette.primary.main
-                      : theme.palette.background.paper,
-                    border: `2px solid ${theme.palette.primary.main}`,
                     display: "flex",
+                    flexDirection: "column",
                     alignItems: "center",
-                    justifyContent: "center",
                     flexShrink: 0,
-                    zIndex: 1,
                   }}
                 >
-                  <WorkIcon
-                    sx={{
-                      fontSize: { xs: 16, md: 20 },
-                      color: isCurrentRole
-                        ? "white"
-                        : theme.palette.primary.main,
-                    }}
-                  />
-                </Box>
-                {!isLast && (
                   <Box
                     sx={{
-                      width: "2px",
-                      flex: 1,
-                      minHeight: "32px",
-                      backgroundColor: theme.palette.divider,
-                      my: 1,
-                    }}
-                  />
-                )}
-              </Box>
-
-              {/* Content card */}
-              <Box sx={{ flex: 1, pb: isLast ? 0 : 5 }}>
-                <Card
-                  sx={{
-                    borderRadius: "12px",
-                    boxShadow: 3,
-                    backgroundColor: theme.palette.background.paper,
-                    transition: "transform 0.3s, box-shadow 0.3s",
-                    "&:hover": {
-                      transform: "translateY(-4px)",
-                      boxShadow: 6,
-                    },
-                  }}
-                >
-                  <CardContent
-                    sx={{
-                      p: { xs: 2, md: 3 },
-                      "&:last-child": { pb: { xs: 2, md: 3 } },
+                      width: { xs: 36, md: 44 },
+                      height: { xs: 36, md: 44 },
+                      borderRadius: "50%",
+                      backgroundColor: isCurrentRole
+                        ? theme.palette.primary.main
+                        : theme.palette.background.paper,
+                      border: `2px solid ${theme.palette.primary.main}`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
+                      zIndex: 1,
                     }}
                   >
+                    <WorkIcon
+                      sx={{
+                        fontSize: { xs: 16, md: 20 },
+                        color: isCurrentRole
+                          ? "white"
+                          : theme.palette.primary.main,
+                      }}
+                    />
+                  </Box>
+                  {!isLast && (
                     <Box
                       sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "flex-start",
-                        flexWrap: "wrap",
-                        gap: 1,
-                        mb: 1,
+                        width: "2px",
+                        flex: 1,
+                        minHeight: "32px",
+                        backgroundColor: theme.palette.divider,
+                        my: 1,
+                      }}
+                    />
+                  )}
+                </Box>
+
+                {/* Content card */}
+                <Box sx={{ flex: 1, pb: isLast ? 0 : 5 }}>
+                  <Card
+                    sx={{
+                      borderRadius: "12px",
+                      boxShadow: 3,
+                      backgroundColor: theme.palette.background.paper,
+                      transition: "transform 0.3s, box-shadow 0.3s",
+                      "&:hover": {
+                        transform: "translateY(-4px)",
+                        boxShadow: 6,
+                      },
+                    }}
+                  >
+                    <CardContent
+                      sx={{
+                        p: { xs: 2, md: 3 },
+                        "&:last-child": { pb: { xs: 2, md: 3 } },
                       }}
                     >
-                      <Box>
-                        <Typography variant="h5" fontWeight="bold">
-                          {job.title}
-                        </Typography>
-                        <Typography variant="subtitle1" color="text.secondary">
-                          {job.company} · {job.location}
-                        </Typography>
-                      </Box>
                       <Box
                         sx={{
                           display: "flex",
-                          flexDirection: "column",
-                          alignItems: { xs: "flex-start", sm: "flex-end" },
-                          gap: 0.5,
+                          justifyContent: "space-between",
+                          alignItems: "flex-start",
+                          flexWrap: "wrap",
+                          gap: 1,
+                          mb: 1,
                         }}
                       >
-                        {isCurrentRole && (
-                          <Chip
-                            label="Current"
-                            size="small"
-                            variant="outlined"
-                            sx={{
-                              borderColor: accentColor,
-                              color: accentColor,
-                              fontWeight: "bold",
-                              borderRadius: "6px",
-                            }}
-                          />
-                        )}
-                        <Typography variant="caption" color="text.secondary">
-                          {job.duration}
-                        </Typography>
-                      </Box>
-                    </Box>
-
-                    <Box component="ul" sx={{ mt: 2, pl: "1.25rem", mb: 0 }}>
-                      {job.achievements.map((achievement) => (
-                        <Typography
-                          component="li"
-                          key={achievement}
-                          variant="body2"
-                          color="text.secondary"
+                        <Box>
+                          <Typography variant="h5" fontWeight="bold">
+                            {job.title}
+                          </Typography>
+                          <Typography
+                            variant="subtitle1"
+                            color="text.secondary"
+                          >
+                            {job.company} · {job.location}
+                          </Typography>
+                        </Box>
+                        <Box
                           sx={{
-                            fontSize: { xs: "0.9rem", md: "1rem" },
-                            mb: 0.5,
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: { xs: "flex-start", sm: "flex-end" },
+                            gap: 0.5,
                           }}
                         >
-                          {achievement}
-                        </Typography>
-                      ))}
-                    </Box>
-                  </CardContent>
-                </Card>
+                          {isCurrentRole && (
+                            <Chip
+                              label="Current"
+                              size="small"
+                              variant="outlined"
+                              sx={{
+                                borderColor: accentColor,
+                                color: accentColor,
+                                fontWeight: "bold",
+                                borderRadius: "6px",
+                              }}
+                            />
+                          )}
+                          <Typography variant="caption" color="text.secondary">
+                            {job.duration}
+                          </Typography>
+                        </Box>
+                      </Box>
+
+                      {job.achievements.length > 0 && (
+                        <Box
+                          component="ul"
+                          sx={{ mt: 2, pl: "1.25rem", mb: 0 }}
+                        >
+                          {job.achievements.map((achievement) => (
+                            <Typography
+                              component="li"
+                              key={achievement}
+                              variant="body2"
+                              color="text.secondary"
+                              sx={{
+                                fontSize: { xs: "0.9rem", md: "1rem" },
+                                mb: 0.5,
+                              }}
+                            >
+                              {achievement}
+                            </Typography>
+                          ))}
+                        </Box>
+                      )}
+                    </CardContent>
+                  </Card>
+                </Box>
               </Box>
-            </Box>
-          );
-        })}
+            );
+          })}
 
-        <Divider sx={{ my: 6 }}>Technical Skills</Divider>
+          <Divider sx={{ my: 6 }}>Technical Skills</Divider>
 
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>
-          {skills.map(({ category, items }) => (
-            <Box
-              key={category}
-              sx={{
-                display: "flex",
-                flexDirection: { xs: "column", md: "row" },
-                gap: { xs: 1, md: 2 },
-                alignItems: "flex-start",
-              }}
-            >
-              <Typography
-                variant="body2"
-                fontWeight="bold"
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>
+            {skills.map(({ category, items }) => (
+              <Box
+                key={category}
                 sx={{
-                  minWidth: { md: "200px" },
-                  color: "text.primary",
-                  pt: 0.4,
-                  flexShrink: 0,
+                  display: "flex",
+                  flexDirection: { xs: "column", md: "row" },
+                  gap: { xs: 1, md: 2 },
+                  alignItems: "flex-start",
                 }}
               >
-                {category}
-              </Typography>
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-                {items.map((skill) => (
-                  <Chip
-                    key={skill}
-                    label={skill}
-                    size="small"
-                    variant="outlined"
-                    sx={{
-                      borderColor: accentColor,
-                      color: accentColor,
-                      backgroundColor: `${accentColor}0d`,
-                      fontSize: "0.75rem",
-                      letterSpacing: "0.02em",
-                    }}
-                  />
-                ))}
+                <Typography
+                  variant="body2"
+                  fontWeight="bold"
+                  sx={{
+                    minWidth: { md: "200px" },
+                    color: "text.primary",
+                    pt: 0.4,
+                    flexShrink: 0,
+                  }}
+                >
+                  {category}
+                </Typography>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+                  {items.map((skill) => (
+                    <Chip
+                      key={skill}
+                      label={skill}
+                      size="small"
+                      variant="outlined"
+                      sx={{
+                        borderColor: accentColor,
+                        color: accentColor,
+                        backgroundColor: `${accentColor}0d`,
+                        fontSize: "0.75rem",
+                        letterSpacing: "0.02em",
+                      }}
+                    />
+                  ))}
+                </Box>
               </Box>
-            </Box>
-          ))}
+            ))}
+          </Box>
         </Box>
-      </Box>
       </motion.div>
     </Box>
   );

@@ -116,8 +116,30 @@ export default function About() {
           backgroundSize: "28px 28px",
         }}
       >
-        <Box sx={{ position: "absolute", top: "-10%", left: "-5%", width: { xs: "400px", md: "600px" }, height: { xs: "400px", md: "600px" }, borderRadius: "50%", background: `radial-gradient(circle, ${isDark ? "rgba(176,133,245,0.12)" : "rgba(103,58,183,0.08)"} 0%, transparent 70%)`, pointerEvents: "none" }} />
-        <Box sx={{ position: "absolute", bottom: "-10%", right: "-5%", width: { xs: "350px", md: "550px" }, height: { xs: "350px", md: "550px" }, borderRadius: "50%", background: `radial-gradient(circle, ${isDark ? "rgba(176,133,245,0.10)" : "rgba(103,58,183,0.07)"} 0%, transparent 70%)`, pointerEvents: "none" }} />
+        <Box
+          sx={{
+            position: "absolute",
+            top: "-10%",
+            left: "-5%",
+            width: { xs: "400px", md: "600px" },
+            height: { xs: "400px", md: "600px" },
+            borderRadius: "50%",
+            background: `radial-gradient(circle, ${isDark ? "rgba(176,133,245,0.12)" : "rgba(103,58,183,0.08)"} 0%, transparent 70%)`,
+            pointerEvents: "none",
+          }}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            bottom: "-10%",
+            right: "-5%",
+            width: { xs: "350px", md: "550px" },
+            height: { xs: "350px", md: "550px" },
+            borderRadius: "50%",
+            background: `radial-gradient(circle, ${isDark ? "rgba(176,133,245,0.10)" : "rgba(103,58,183,0.07)"} 0%, transparent 70%)`,
+            pointerEvents: "none",
+          }}
+        />
         <Avatar
           src="/static/images/profile_pic.png"
           alt="Adriana de Lazzari"
@@ -135,9 +157,9 @@ export default function About() {
           color="text.secondary"
           sx={{ mt: 2, maxWidth: "650px" }}
         >
-          I'm a passionate Software Engineer specializing in frontend
-          technologies such as React, Angular, TypeScript, and Material UI. I
-          thrive on building scalable and user-friendly applications that
+          I'm a passionate Software Developer specializing in full stack
+          technologies such as React, Angular, TypeScript, Node.js, and Material
+          UI. I thrive on building scalable and user-friendly applications that
           enhance user experience and business efficiency. With a strong
           foundation in performance optimization, API integrations, and UI
           modernization, I'm always eager to tackle new challenges and improve

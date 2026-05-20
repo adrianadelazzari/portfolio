@@ -3,7 +3,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useThemeProvider } from "../../theme/ThemeProvider";
 
-const technologies = ["React", "Angular", "Vue.js", "TypeScript", "Storybook"];
+const technologies = ["React", "Angular", "TypeScript", "Node.js", "Storybook"];
 
 export default function Home() {
   const { theme } = useThemeProvider();
@@ -106,8 +106,8 @@ export default function Home() {
                 lineHeight: 1.4,
               }}
             >
-              Frontend Engineer specializing in React, Angular, TypeScript, and
-              scalable UI systems
+              Software Developer specializing in React, Angular, TypeScript, and
+              Node.js
             </Typography>
 
             <Typography

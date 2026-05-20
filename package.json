@@ -56,9 +56,11 @@
   "overrides": {
     "@tootallnate/once": "^3.0.1",
     "nth-check": "^2.0.1",
+    "picomatch": "^4.0.4",
     "postcss": "^8.5.15",
     "serialize-javascript": "^7.0.5",
-    "underscore": "^1.13.8"
+    "underscore": "^1.13.8",
+    "ws": "^8.17.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.5",
